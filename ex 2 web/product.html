@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">MyShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shop.html">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Details -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <img id="product-image" src="" class="img-fluid mb-3" style="max-width: 400px;">
+            </div>
+            <div class="col-md-6">
+                <h2 id="product-name"></h2>
+                <p id="product-price" class="lead text-danger fw-bold"></p>
+
+                <!-- Star Ratings -->
+                <div class="mb-3">
+                    <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span> (4.5/5)
+                </div>
+
+                <p id="product-description" class="text-muted"></p>
+
+                <button class="btn btn-primary">Add to Cart</button>
+                <button class="btn btn-success">Buy Now</button>
+            </div>
+        </div>
+
+        <!-- Reviews Section -->
+        <div class="mt-5">
+            <h3>Customer Reviews</h3>
+            <div class="border p-3 mb-2">
+                <strong>John Doe</strong> <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <p>"Great product! Highly recommend."</p>
+            </div>
+            <div class="border p-3 mb-2">
+                <strong>Jane Smith</strong> <span class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                <p>"Good quality, but shipping was slow."</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        // Array of products (you can add as many as you want manually)
+        const products = [
+            { id: 1, name: "iPhone 15 Pro", price: "Rs.120000", image: "iphon.jpeg", description: "iPhone 15 Pro 5G with 8GB RAM and 256GB storage." },
+            { id: 2, name: "iPhone 13 Pro", price: "Rs.100000", image: "iphone2.jpeg", description: "Apple iPhone 13 (128GB) - Blue." },
+            { id: 3, name: "Realme 12+ 5G", price: "Rs.22000", image: "mobile.jpeg", description: "Realme 12+ 5G with 8GB RAM and 256GB storage." },
+            { id: 4, name: "100% cotton saree", price: "Rs.8500", image: "saree4.jpeg", description: "Product details Material compositionCotton BlendOccasion typeFestival, Party, Wedding, Casual, Ceremony PatternStripe Care instructionsMachine Wash Country of OriginIndia" },
+            { id: 5, name: "silk saree", price: "Rs.6000", image: "saree5.jpeg", description: "Product details:Material composition:Silk Occasion typeFestival, Party, Wedding Care instructionsDry Clean Only Country of Origin India" },
+            { id: 6, name: "Asus Tuf f15", price: "Rs.85000", image: "laptop.jpeg", description: "8Gb Ram,512Gb Rom,RTX 3050,Windows 11 Home." },
+            { id: 7, name: "wood tea pai", price: "Rs.4000", image: "chair.jpeg", description: "Wood tea pai Very strong and lite weight " },
+            { id: 8, name: "stell tea pai", price: "Rs.3000", image: "chair2.jpeg", description: "Stell tea pai Very strong and lite weight" },
+            { id: 9, name: "boat buds 133p", price: "Rs.1500", image: "buds.jpeg", description: "boAt Airdopes 133p, Low Latency, ENx Tech, 42HRS Battery, Fast Charge, IWP, IPX4, v5.1 Bluetooth Earbuds, TWS Ear Buds Wireless Earphones with mic." },
+            { id: 10, name: "1+ buds pro", price: "Rs.5000", image: "buds2.jpeg", description: "Samsung 55-inch 4K QLED Smart TV." }
+        ];
+
+        // Find product by ID
+        const product = products.find(p => p.id == productId);
+
+        if (product) {
+            document.getElementById("product-name").textContent = product.name;
+            document.getElementById("product-image").src = product.image;
+            document.getElementById("product-price").textContent = product.price;
+            document.getElementById("product-description").textContent = product.description;
+        } else {
+            document.querySelector(".container").innerHTML = "<h2 class='text-center text-danger'>Product not found!</h2>";
+        }
+    </script>
+</body>
+</html>
